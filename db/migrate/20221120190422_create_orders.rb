@@ -8,7 +8,8 @@ class CreateOrders < ActiveRecord::Migration[7.0]
       t.string :city, null: false
       t.string :address, null: false
       t.string :count, null: false, default: "1"
-      t.belongs_to: user, null: false
+      t.belongs_to :user, null: false
+      t.belongs_to :item, null: false
 
       t.timestamps
     end

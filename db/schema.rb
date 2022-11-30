@@ -76,7 +76,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_27_160556) do
     t.string "last_name"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "phone_number", null: false
+    t.string "phone"
     t.string "img_url"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -85,7 +85,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_27_160556) do
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["phone_number"], name: "index_users_on_phone_number", unique: true
+    t.index ["phone"], name: "index_users_on_phone", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

@@ -7,7 +7,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
       t.string :last_name
       t.string :email,              null: false, default: "", index: { unique: true }
       t.string :encrypted_password, null: false, default: ""
-      t.string :phone_number, null: false, index: { unique: true }
+      t.string :phone, null: true, index: { unique: true }
       t.string :img_url
 
       t.string   :reset_password_token, index: { unique: true }

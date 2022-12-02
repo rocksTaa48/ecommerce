@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html class="h-full">
-  <head>
-    <title>Simpleshop</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta charset="UTF-8">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <script defer src="https://unpkg.com/alpinejs@3.9.1/dist/cdn.min.js"></script>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-  </head>
-
-  <body class="bg-[url('unsplash.jpg')] bg-cover" x-data="{ openMenu : false }"
+<body class="bg-[url('unsplash.jpg')] bg-cover" x-data="{ openMenu : false }"
     :class="openMenu ? 'overflow-hidden' : 'overflow-visible' ">
 
     <style>
@@ -45,7 +32,7 @@
             <a href="#" class="inline-flex py-2 px-3 hover:bg-slate-200 rounded">About</a>
           </li>
           <li>
-            <%= link_to "New item", new_item_path, class:"inline-flex py-2 px-3 hover:bg-slate-200 rounded" %>
+            <a href="#" class="inline-flex py-2 px-3 hover:bg-slate-200 rounded">Articles</a>
           </li>
           <% if user_signed_in? %>
           <li>
@@ -99,8 +86,4 @@
           </svg>
         </button>
       </nav>
-    <main class="container mt-3">
-      <%= yield %>
-    </main>
-  </body>
-</html>
+</body>

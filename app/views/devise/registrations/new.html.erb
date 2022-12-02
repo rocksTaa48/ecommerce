@@ -6,15 +6,15 @@
       <h1 class="text-lg font-bold">Login</h1>
       <form class="flex flex-col mt-4">
 
-        <%= f.text_field :first_name, autofocus: true, autocomplete: "name", class:"px-4 py-3 mt-4 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm", placeholder:"Name" %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"px-4 py-3 mt-4 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm", placeholder:"Name" %>
 
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"px-4 py-3 mt-4 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm", placeholder:"Email address" %>
 
               <% if @minimum_password_length %>
-                (<%= @minimum_password_length %> characters minimum)
+                <a class="text-xs ml-2 font-medium text-blue-500"> (pass length minimum <%= @minimum_password_length %> simbols)</a>
               <% end %>
 
-        <%= f.password_field :password, autocomplete: "current-password", class:"px-4 py-3 mt-4 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm", placeholder:"Password" %>
+        <%= f.password_field :password, autocomplete: "current-password", class:"px-4 py-3 mt-2 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm", placeholder:"Password" %>
 
         <%= f.password_field :password_confirmation, autocomplete: "current-password", class:"px-4 py-3 mt-4 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm", placeholder:"Password confirm" %>
 
@@ -27,7 +27,7 @@
                   <%= f.label :remember_me %>
                 </div>
               <% end %>
-          <p class="mt-4 text-xs font-light text-gray-700">
+          <p class="text-xs mt-4  font-light text-gray-700">
             Already registered?<a class="ml-2 font-medium text-blue-500"><%= render "devise/shared/links" %></a>
           </p>
         </div>

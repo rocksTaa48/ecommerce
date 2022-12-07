@@ -12,11 +12,23 @@ class CategoriesController < ApplicationController
     @category = Category.new category_params
     if @category.save
       flash[:success] = "Object successfully created"
-      redirect_to @category
+      redirect_to root_path
     else
       flash[:error] = "Something went wrong"
-      render 'new'
+      render :new
     end
+  end
+
+  def update
+    @category = Category.find_by id: params[:id]
+    if @category.update category_params
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
+  def delete
   end
   
   def show

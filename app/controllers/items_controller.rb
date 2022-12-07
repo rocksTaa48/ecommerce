@@ -15,10 +15,13 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find_by id: params[:id]
     if @item.update item_params
-      redirect_to @item
+      redirect_to root_path
     else
       render :edit
     end
+  end
+
+  def delete
   end
 
   def create

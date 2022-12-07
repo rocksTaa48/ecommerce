@@ -1,3 +1,25 @@
 <div>
-  
+  <h1>Show Product</h1>
+<%= form_with model: @item do |f| %>
+<p class="mt-4 mb-4">
+<%= @item.title %>
+</p>
+
+<p class="mb-4">
+<%= @item.body %>
+</p>
+
+<p class="mb-4">
+US $ = <%= @item.price %>
+</p>
+
+<p class="mb-4">
+Aviable <%= @item.quantity  %>
+</p>
+
+<p class="mb-4">
+  <%= link_to "Change", edit_item_path(@item)  %>
+</p>
+
+<% end %>
 </div>

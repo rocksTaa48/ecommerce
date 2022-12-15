@@ -1,3 +1,4 @@
+<%= provide :main_top do %>
 <button id="to-top-button" onclick="goToTop()" title="Go To Top"
         class="hidden fixed z-90 bottom-8 right-8 border-0 w-16 h-16 rounded-full drop-shadow-md bg-white text-blue-500 text-3xl font-bold">&uarr;</button>
 
@@ -17,3 +18,4 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 </script>
+<% end %>

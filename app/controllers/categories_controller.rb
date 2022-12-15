@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
 
   def index
-    @categories = Category.all
+    @categories = Category.order("created_at DESC")
   end
 
   def new
@@ -28,11 +28,15 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
+    @category.destroy
+    flash[:success] = t('.success')
+    redirect_to root_path
   end
   
   def show
     @category = Category.find_by id: params[:id]
+    @subcats = Subcat.where(category_id: params[:category_id])
   end
   
   private

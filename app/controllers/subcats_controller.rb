@@ -1,11 +1,11 @@
 class SubcatsController < ApplicationController
 
   def index
-    @subcats = Subcat.all
+    @subcat = Subcat.order("created_at DESC")
   end
 
   def edit
-    @item = item.find_by id: params[:id]
+    @subcat = subcat.find_by id: params[:id]
   end
   
 

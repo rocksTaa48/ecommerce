@@ -1,10 +1,14 @@
 <% @subcat.items.each do |item| %>
 <div>
   <%= link_to item_path(item) do %>
-    <div class="relative h-80 w-full overflow-hidden rounded-lg bg-white group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
-       <%= image_tag src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-01.jpg" %>
+    <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8 drop-shadow-lg">
+      <%= image_tag src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg" %>
     </div>
   <% end %>
-  <h3 class="mt-6 text-base text-gray-900"><%= item.title %></h3>
+  <h3 class="mt-4 text-sm text-gray-700"><%= item.title %></h3>
+  <div class="grid grid-cols-2 mt-2">
+    <p class="mt-1 text-lg font-medium text-gray-800">US $ <%= item.price %></p>
+    <button type="button" class="rounded-full inline-block px-6 py-2.5 bg-blue-500 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Add to cart</button>
+  </div>
 </div>
 <% end %>

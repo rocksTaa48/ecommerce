@@ -1,7 +1,8 @@
 <% section_at %>
+<% leftbar_at %>
 <%= provide :main_navbar do %>
 <!--Menu-->
-  <div class="bg-[url('unsplash.jpg')] bg-cover" x-data="{ openMenu : false }"
+  <div class="bg-[url('unsplash.jpg')] bg-cover" x-data="{ openMenu: false, sidebarOpen: true}"
     :class="openMenu ? 'overflow-hidden' : 'overflow-visible'">
 
     <style>
@@ -12,7 +13,7 @@
 
       <header class="flex justify-between items-center bg-white drop-shadow-sm py-4 px-8">
         <!--My Logo-->
-        <a href="/" class="text-lg font-bold">Logo</a>
+        <a x-on:click="sidebarOpen = !sidebarOpen" class="text-lg font-bold">Logo</a>
         <!--Mobile Menu Toggle-->
         <button class="flex md:hidden flex-col items-center align-middle" @click="openMenu = !openMenu"
           :aria-expanded="openMenu" aria-controls="mobile-navigation" aria-label="Navigation Menu">
@@ -26,6 +27,7 @@
           <%= yield :sections %>
         </nav>
       </header>
+      <%= yield :leftbar %>
       <!--Navigation Mobile-->
       <nav id="mobile-navigation" class="fixed top-0 right-0 bottom-0 left-0 backdrop-blur-sm z-10"
         :class="openMenu ? 'visible' : 'invisible' " x-cloak>

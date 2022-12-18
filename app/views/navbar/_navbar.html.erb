@@ -1,8 +1,10 @@
 <% section_at %>
 <% leftbar_at %>
 <%= provide :main_navbar do %>
+
 <!--Menu-->
-  <div class="bg-[url('unsplash.jpg')] bg-cover" x-data="{ openMenu: false, sidebarOpen: true}"
+
+  <div class="bg-cover" x-data="{ openMenu: false, sidebarOpen: false}"
     :class="openMenu ? 'overflow-hidden' : 'overflow-visible'">
 
     <style>
@@ -11,10 +13,24 @@
       }
     </style>
 
-      <header class="flex justify-between items-center bg-white drop-shadow-sm py-4 px-8">
-        <!--My Logo-->
-        <a x-on:click="sidebarOpen = !sidebarOpen" class="text-lg font-bold">Logo</a>
+      <header class="flex justify-between relative z-20 items-center bg-white drop-shadow-sm py-4 px-8">
+        <button x-on:click="sidebarOpen = !sidebarOpen" class="relative border-0 w-10 h-10 rounded-full drop-shadow-md bg-white text-gray-700 text-3xl font-bold justify-center">
+
+          <!-- open icon -->
+
+          <svg x-show="!sidebarOpen" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+
+          <!-- close icon -->
+
+          <svg x-show="sidebarOpen" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
         <!--Mobile Menu Toggle-->
+
         <button class="flex md:hidden flex-col items-center align-middle" @click="openMenu = !openMenu"
           :aria-expanded="openMenu" aria-controls="mobile-navigation" aria-label="Navigation Menu">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -22,17 +38,26 @@
           </svg>
           <span class="text-xs">Menu</span>
         </button>
-        <!--Navigations-->
+
+        <!--Navigation-->
+
         <nav class="hidden md:flex">
           <%= yield :sections %>
         </nav>
+        
       </header>
+
       <%= yield :leftbar %>
+
       <!--Navigation Mobile-->
-      <nav id="mobile-navigation" class="fixed top-0 right-0 bottom-0 left-0 backdrop-blur-sm z-10"
+
+      <nav id="mobile-navigation" class="fixed top-0 right-0 bottom-0 left-0 backdrop-blur-sm z-30"
         :class="openMenu ? 'visible' : 'invisible' " x-cloak>
+        
         <%= yield :mobile_section %>
+
         <!--Close Button-->
+
         <button class="absolute top-0 right-0 bottom-0 left-0" @click="openMenu = !openMenu" :aria-expanded="openMenu"
           aria-controls="mobile-navigation" aria-label="Close Navigation Menu">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 absolute top-2 left-2" fill="none" viewBox="0 0 24 24"
@@ -42,5 +67,7 @@
         </button>
       </nav>
   </div>
-  <!--End Menu-->
+
+<!--End Menu-->
+
 <% end %>

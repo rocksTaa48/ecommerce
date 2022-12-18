@@ -1,18 +1,24 @@
 <%= provide :leftbar do %>
-<div>
-  <aside class="flex-shrink-0 w-64 flex flex-col border-r transition-all duration-300 bg-gray-100" :class="{ '-ml-64': !sidebarOpen }">
-    <nav class="flex-1 flex flex-col bg-white mt-12 absolute w-64">
-      <p class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-300 bg-gray-100 transition duration-300 ease-in-out"> Hello </p>
-      <p class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-300 bg-gray-100 transition duration-300 ease-in-out"> Hello </p>
-      <p class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-300 bg-gray-100 transition duration-300 ease-in-out"> goodbue </p>
-      <p class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-300 bg-gray-100 transition duration-300 ease-in-out"> Fantana </p>
-      <p class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-300 bg-gray-100 transition duration-300 ease-in-out"> monana </p>
-      <p class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-300 bg-gray-100 transition duration-300 ease-in-out"> Hello </p>
-      <p class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-300 bg-gray-100 transition duration-300 ease-in-out"> mine </p>
-      <p class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-300 bg-gray-100 transition duration-300 ease-in-out"> Hello </p>
-      <p class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-300 bg-gray-100 transition duration-300 ease-in-out"> Opiusur </p>
-      <p class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-300 bg-gray-100 transition duration-300 ease-in-out"> Hello </p>
-    </nav>
-  </aside>
-</div>
+<aside class="flex-shrink-0 w-64 flex flex-col border-r transition-all duration-300 bg-gray-100" :class="{ '-ml-64': !sidebarOpen }">
+  <nav class="flex-1 flex flex-col bg-gray-100 fixed z-10 w-64 h-full top-0 divide-y">
+    <p class="flex items-center text-lg italic py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 bg-gray-100  ease-in-out mb-4 mt-2"> Catalogue name </p>
+    
+    <% Category.all.each do |category| %>
+    <%= link_to category.title, category_path(category), class:"flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-300 bg-gray-100 transition duration-300 ease-in-out"%>
+    <% end %>
+    
+    <!--Close Button-->
+
+    <button x-on:click="sidebarOpen = !sidebarOpen" class="absolute top-0 right-0 bottom-0 left-0">   
+      <!-- open icon -->    
+      <svg x-show="!sidebarOpen" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 absolute top-4 left-64 bg-gray-100 rounded-r-lg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>    
+      <!-- close icon -->   
+      <svg x-show="sidebarOpen" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 absolute top-4 left-64 bg-gray-100 rounded-r-lg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+  </nav>
+</aside>
 <% end %>

@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 devise_for :users, controllers: { registrations: "registrations"}
-resources :items, only: %i[new show create edit update destroy]
-resources :subcats
+resources :items
+resources :subcats do
+  member do
+    get :subcat_open
+  end
+end
 resources :categories
 
 root "items#index"

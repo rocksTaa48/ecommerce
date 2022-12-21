@@ -4,9 +4,9 @@
     <p class="flex items-center text-lg italic py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 bg-gray-100  ease-in-out mb-4 mt-2"> Catalogue name </p>
     
     <% Category.all.each do |category| %>
-    <%= link_to category.title, category_path(category), class:"flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-300 bg-gray-100 transition duration-300 ease-in-out"%>
+      <%= link_to category.title, category_path(category), class:"flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-300 bg-gray-100 transition duration-300 ease-in-out"%>
     <% end %>
-    
+ 
     <!--Close Button-->
 
     <button x-on:click="sidebarOpen = !sidebarOpen" class="absolute top-0 right-0 bottom-0 left-0">   

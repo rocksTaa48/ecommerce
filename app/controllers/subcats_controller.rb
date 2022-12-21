@@ -1,4 +1,5 @@
 class SubcatsController < ApplicationController
+  # before_action :set_items, only: %i[ show edit update destroy subcat_open ]
 
   def index
     @subcat = Subcat.order("created_at DESC")
@@ -8,6 +9,9 @@ class SubcatsController < ApplicationController
     @subcat = subcat.find_by id: params[:id]
   end
   
+  def subcat_open
+    
+  end
 
   def new
     @subcat = Subcat.new

@@ -1,0 +1,4 @@
+<%= turbo_frame_tag "items-page-#{@pagy.page}" do %>
+  <%= render @items %>
+  <%= render "items/next_page" %>
+<% end %>

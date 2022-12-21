@@ -1,7 +1,13 @@
 class ItemsController < ApplicationController
 
   def index
-    @items = Item.all
+    #@items = Item.all
+    @pagy, @items = pagy(Item.order(created_at: :desc), items: 24)
+
+    if params[:page]
+     render "scroll_list"
+    end
+
   end
 
   def new

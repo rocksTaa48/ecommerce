@@ -1,13 +1,16 @@
 class ItemsController < ApplicationController
 
   def index
+    @categories = Category.order("created_at DESC")
+    
+    @subcats = Subcat.where(category_id: params[:category_id])
+
     #@items = Item.all
-    @pagy, @items = pagy(Item.order(created_at: :desc), items: 24)
-
-    if params[:page]
-     render "scroll_list"
+    @pagy, @items = pagy_countless(Item.order(created_at: :desc), items: 36)
+    respond_to do |format|
+      format.html #GET
+      format.turbo_stream #POST
     end
-
   end
 
   def new

@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
 devise_for :users, controllers: { registrations: "registrations"}
-resources :items
-resources :subcats do
-  member do
-    get :subcat_open
+
+resources :items do
+  collection do
+    post :index
   end
 end
+
+resources :subcats
+
 resources :categories
 
-root "items#index"
+root "pages#index"
 end

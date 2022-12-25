@@ -27,7 +27,7 @@ end
   )
 end
 
-(1..200).each do |id|
+(1..900).each do |id|
   Item.create!(
     id: id,
     body: Faker::Lorem.sentence(word_count: 30),

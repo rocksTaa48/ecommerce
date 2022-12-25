@@ -2,11 +2,29 @@
 <aside class="flex-shrink-0 w-64 flex flex-col border-r transition-all duration-300 bg-gray-100" :class="{ '-ml-64': !sidebarOpen }">
   <nav class="flex-1 flex flex-col bg-gray-100 fixed z-10 w-64 h-full top-0 divide-y">
     <p class="flex items-center text-lg italic py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 bg-gray-100  ease-in-out mb-4 mt-2"> Catalogue name </p>
-    
-    <% Category.all.each do |category| %>
-      <%= link_to category.title, category_path(category), class:"flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-300 bg-gray-100 transition duration-300 ease-in-out"%>
-    <% end %>
- 
+    <div id="catalogue" class="overflow-scroll">
+
+      <ul class="shadow-box">	
+      <% @categories.each do |category|%>				
+        <li class="relative border-b border-gray-200" x-data="{selected:null}">
+          <button type="button" class="w-full px-8 py-6 text-left" @click="selected !== 1 ? selected = 1 : selected = null">
+            <div class="flex items-center justify-between">
+              <span class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  ease-in-out">
+                  <%= category.title %>            
+              </span>
+            </div>
+          </button>
+          <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container1" x-bind:style="selected == 1 ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
+            <div class="p-6">
+                <% category.subcats.each do |subcat| %>
+                  <%= link_to subcat.title, subcat_path(subcat), class:"flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded bg-gray-200 mb-2 ease-in-out" %>
+                <% end %>
+            </div>
+          </div>
+        </li>
+      <% end %>
+      </ul>
+    </div>
     <!--Close Button-->
 
     <button x-on:click="sidebarOpen = !sidebarOpen" class="absolute top-0 right-0 bottom-0 left-0">   

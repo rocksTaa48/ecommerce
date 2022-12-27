@@ -3,24 +3,15 @@
 <!--item image content begin-->
   <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8 drop-shadow-lg">
     <div x-data="carousel()" class="relative">
-      <img
-        class="h-64 w-full object-cover object-center"
-        :src="images[selected]"
-        alt="mountains"
-      />
-
-      <button
-        @click="if (selected > 0 ) {selected -= 1} else { selected = images.length - 1 }"
-        class="absolute inset-y-0 left-0 px-2 py-[25%] h-full w-8 group hover:bg-gray-500 hover:bg-opacity-75 cursor-pointer"
-      >
+      <%= link_to item do %>
+      <img class="h-64 w-full object-cover object-center" :src="images[selected]" alt="mountains"/>
+      <% end %>
+      <button @click="if (selected > 0 ) {selected -= 1} else { selected = images.length - 1 }" class="absolute inset-y-0 left-0 px-2 py-[25%] h-full w-10 group hover:bg-gray-400 hover:bg-opacity-50 cursor-pointer">
         <span class="hidden group-hover:block text-gray-50">
           &larr;
         </span>
       </button>
-      <button
-        @click="if (selected < images.length - 1  ) {selected += 1} else { selected = 0 }"
-        class="absolute inset-y-0 right-0 px-2 py-[25%] h-full w-8 group hover:bg-gray-500 hover:bg-opacity-75 cursor-pointer"
-      >
+      <button @click="if (selected < images.length - 1  ) {selected += 1} else { selected = 0 }" class="absolute inset-y-0 right-0 px-2 py-[25%] h-full w-10 group hover:bg-gray-400 hover:bg-opacity-50 cursor-pointer">
         <span class="hidden group-hover:block text-gray-50">
           &rarr;
         </span>
@@ -28,11 +19,8 @@
 
       <div class="absolute bottom-0 w-full p-4 flex justify-center space-x-2">
         <template x-for="(image,index) in images" :key="index">
-          <button
-            @click="selected = index"
-            :class="{'bg-gray-300': selected == index, 'bg-gray-500': selected != index}"
-            class="h-2 w-2 rounded-full hover:bg-gray-300 ring-2 ring-gray-300"
-          ></button>
+          <button @click="selected = index" :class="{'bg-gray-300': selected == index, 'bg-gray-500': selected != index}" class="h-2 w-2 rounded-full hover:bg-gray-300 ring-2 ring-gray-300">
+          </button>
         </template>
       </div>
     </div>
@@ -54,10 +42,9 @@
   </div>
   <!--item image content end-->
 
-  <%= link_to item_path(item) do %>
     <h3 class="mt-4 text-sm text-gray-700"><%= item.title %></h3>
     <h3 class="mt-4 text-sm text-gray-700"><%= item.id %></h3>
-  <% end %>
+
   <div class="grid grid-cols-2 mt-2">
     <p class="mt-1 text-lg font-medium text-gray-800">US $ <%= item.price %></p>
     <button type="button" class="rounded-full inline-block px-6 py-2.5 bg-blue-500 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Add to cart</button>

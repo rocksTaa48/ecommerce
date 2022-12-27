@@ -1,10 +1,6 @@
 class ItemsController < ApplicationController
 
   def index
-    @categories = Category.order("created_at DESC")
-    
-    @subcats = Subcat.where(category_id: params[:category_id])
-
     #@items = Item.all
     @pagy, @items = pagy_countless(Item.order(created_at: :desc), items: 36)
     respond_to do |format|

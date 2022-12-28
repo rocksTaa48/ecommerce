@@ -26,6 +26,7 @@ class SubcatsController < ApplicationController
   def show
     @subcat = Subcat.find_by id: params[:id]
     @items = Item.where(subcat_id: params[:subcat_id])
+    @category = @subcat.category
   end
   
   private

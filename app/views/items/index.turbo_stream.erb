@@ -5,6 +5,10 @@
 
 <% if @pagy.next.present? %>
   <%= turbo_stream.replace :pagination do %>
-    <%= turbo_frame_tag :pagination, loading: :lazy, src: items_path(format: :turbo_stream, page: @pagy.next) %>
+    <%= turbo_frame_tag :pagination, loading: :lazy, src: items_path(format: :turbo_stream, page: @pagy.next) do %>
+    <div class="flex justify-center mt-6">
+      <p class="text-lg font-bold text-gray-700">Loading...</p>
+    </div>
+    <% end %>
   <% end %>
 <% end %>
